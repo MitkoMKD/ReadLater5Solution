@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Entity.Bookmark>
+@{
+    ViewData["Title"] = "My Bookmarks";
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.URL)</th>
+            <th>@Html.DisplayNameFor(model => model.ShortDescription)</th>
+            <th>@Html.DisplayNameFor(model => model.Category)</th>
+            <th>   </th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.URL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortDescription)
+            </td><td>
+                @(item.Category?.Name ?? "—")
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
