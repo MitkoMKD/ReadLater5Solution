@@ -27,6 +27,7 @@ namespace ReadLater.API {
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ReadLaterDataContext>();
             services.AddScoped<IBookmarkService, BookmarkService>();
+            services.AddScoped<ICategoryService, CategoryService>();
             services.ConfigureApplicationCookie(options => {
                 options.LoginPath = "/api/auth/login";
                 options.LogoutPath = "/api/auth/logout";
